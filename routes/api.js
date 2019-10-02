@@ -59,7 +59,6 @@ router.put('/:postId', async (req,res) => {
   let newBody = {}
   Object.keys(req.body).filter( i => i !== '_id').map(key => newBody[key] = req.body[key])
   console.log(newBody)
-
   try{
     const updatePost = await Member.findByIdAndUpdate({_id: req.params.postId }, newBody)
     res.send(updatePost)

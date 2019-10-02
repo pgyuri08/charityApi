@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="utf-8">
+    <title>MainPage</title>
+    <link rel="stylesheet" href="style.css" />
+     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  </head>
+  <body>
+<div class="header">
+  <div class="mainpage">Members</div>
+  <br>
+</div>
+  <div class="setBox">
+    <div class="">
+      <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name" class="searchnm">
+    </div>
+  </div>
+  <div class="addMember">Add Member
+    <button onclick="addMember()" class="addBtn"><i class="material-icons"> add</i></button>
+  </div>
+  <div class="adjustList">
+    <input type="checkbox" id="myCheck" onclick="tickCheckbox()"> I have a bike<br>
+  </div>
+  <div class="main">
+    <div class="list-header">
+      <div class="idhead userID">ID  <button onclick="sortIntFunction('userID')" class="sortById"><i class="material-icons">
+        unfold_more
+        </i></button></div>
+      <div class="fnamehead firstName">FirstName  <button onclick="sortFunction('first_name')" class="sortByFname"><i class="material-icons">
+        sort_by_alpha
+        </i></button></div>
+      <div class="lnamehead lastName">LastName  <button onclick="sortFunction('last_name')" class="sortByLname"><i class="material-icons">
+        sort_by_alpha
+        </i></button></div>
+      <div class="gender">Gender  <button onclick="sortFunction('gender')" class="sortByGender"><i class="material-icons">
+        sort_by_alpha
+        </i></button></div>
+      <div class="bodhead birthOfDate">B.O.D  <button onclick="sortFunction('birthOfDate')" class="sortByBod"><i class="material-icons">
+        unfold_more
+        </i></button></div>
+      <div class="email">Email</div>
+      <div class="phone">Phone</div>
+    </div>
+    <br>
+    <ol>
+
+    </ol>
+  </div>
+
+<script type="text/javascript" src="function.js">
+
+</script>
+  </body>
+</html>
