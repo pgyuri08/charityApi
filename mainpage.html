@@ -4,24 +4,36 @@
   <head>
     <meta charset="utf-8">
     <title>MainPage</title>
-    <link rel="stylesheet" href="style.css" />
+     <link rel="stylesheet" href="style.css" />
      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   </head>
   <body>
-<div class="header">
-  <div class="mainpage">Members</div>
-  <br>
-</div>
+  <div class="header">
+    <div class="mainpage">Members</div>
+    <br>
+  </div>
   <div class="setBox">
     <div class="">
       <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name" class="searchnm">
     </div>
   </div>
   <div class="addMember">Add Member
-    <button onclick="addMember()" class="addBtn"><i class="material-icons"> add</i></button>
+    <button onclick="addMember()" class="addBtn"><i class="material-icons"> add</i>
+    <span class="tooltiptext">Click here to add a new Member</span></button>
   </div>
-  <div class="adjustList">
-    <input type="checkbox" id="myCheck" onclick="tickCheckbox()"> I have a bike<br>
+  <div class="form">
+    <button class="open-button" onclick="openForm()">Set Layout</button>
+  </div>
+  <div class="form-popup" id="myForm">
+    <form action="/action_page.php" class="form-container">
+      <h3>Tick Layout</h3>
+      <input type="checkbox" id="genderCheck" onclick="tickGenderCheckbox()"> Gender<br>
+      <input type="checkbox" id="emailCheck" onclick="tickEmailCheckbox()"> Email<br>
+      <input type="checkbox" id="phoneCheck" onclick="tickPhoneCheckbox()"> Phone<br>
+      <input type="checkbox" id="bodCheck" onclick="tickBodCheckbox()"> B.O.D<br>
+      <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+    </form>
   </div>
   <div class="main">
     <div class="list-header">

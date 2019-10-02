@@ -13,7 +13,6 @@ const mainCall = () => {
     let id = myJson.map(e=>e.userID);
     highestid = Math.max(...id)
     highestid = highestid + 1;
-    console.log(highestid)
 
     name = (JSON.stringify(myJson));
 
@@ -28,9 +27,7 @@ const mainCall = () => {
 mainCall()
 
 function addElement(data) {
-  let bod = new Date(data.birthOfDate).toLocaleString('en-GB', {dateStyle:'short'})
-  // data.birthOfDate = new Date(data.birthOfDate).toLocaleDateString('en-GB')
-  // data.birthOfDate = Date.parse(data.birthOfDate)
+  let bod = new Date(data.birthOfDate).toLocaleString('en-GB', {dateStyle:'short'});
   let mainDiv = document.querySelector('.main ol')
   let dataLi = document.createElement('ul');
   dataLi.classList.add('classOl');
@@ -56,9 +53,13 @@ function addElement(data) {
   lnameDiv.classList.add('lastName');
   dataLi.appendChild(lnameDiv);
 
+  let genderCheck = document.querySelector('#genderCheck').checked;
   let genderDiv = document.createElement('div');
   genderDiv.innerText = data.gender;
   genderDiv.classList.add('gender');
+  if(genderCheck){
+    genderDiv.style.display = 'none'
+  }
   dataLi.appendChild(genderDiv);
 
   let birthDiv = document.createElement('div');
@@ -225,19 +226,17 @@ function addEditElm (ol, data) {
 
 function editFunction(btn, data) {
   btn.classList.toggle('active')
-
+  document.querySelectorAll('.container').forEach(element=>{
+    let parent = element.parentNode;
+    parent.removeChild(element);
+    parent.querySelector('.editBtn').style.background = 'white';
+    parent.style.height = '31px';
+  })
   if(btn.classList.contains('active')) {
     btn.style.background = 'rgba(0,0,0,0.4)'
     btn.parentElement.style.height = '100px';
     let ol = btn.parentElement;
     addEditElm(ol, data)
-  } else {
-    let cont = document.querySelector('.container');
-    let parent = cont.parentNode;
-    parent.removeChild(cont);
-    btn.style.background = 'white';
-    btn.parentElement.style.height = '31px';
-
   }
 }
 
@@ -294,30 +293,72 @@ function insertFunction(parent) {
 }
 
 function addMember() {
-  let btn = document.querySelector('.addBtn');
+  var btn = document.querySelector('.addBtn');
   btn.style.display = 'none';
 
-  let parent = document.querySelector('.addMember');
-  // let cancel = document.createElement('button');
-  // parent.appendChild(cancel);
 
-  // cancel.classList.toggle('active')
-  // if(cancel.classList.contains('active')) {
-  //   parent.removeChild(parent.querySelector('.container'));
+  var parent = document.querySelector('.addMember');
+  parent.style.width = "100%"
+  var cancel = document.createElement('button');
+  cancel.innerText = 'close panel'
+  parent.appendChild(cancel);
+
+  cancel.onclick = function() {
+    parent.removeChild(parent.querySelector('.container'));
+    btn.style.display = 'inline-block';
+    cancel.style.display = 'none';
+  }
 
   addEditElm(parent)
   parent.querySelector('.updateBtn').onclick = () => {
     insertFunction(parent)
-    btn.style.display = 'block';
+    btn.style.display = 'inline-block';
     parent.removeChild(parent.querySelector('.container'));
+    cancel.style.display = 'none';
   }
 }
 
-function tickCheckbox() {
-  let checkBox = document.getElementById('myCheck');
+function tickGenderCheckbox(a) {
+  let checkBox = document.getElementById('genderCheck');
   let genderList = document.querySelectorAll('.gender');
 
   genderList.forEach(elm => {
     elm.style.display = checkBox.checked ? 'none' : 'inline-block'
   })
+}
+
+function tickEmailCheckbox() {
+  let checkBox = document.getElementById('emailCheck');
+  let emailList = document.querySelectorAll('.email');
+
+  emailList.forEach(elm => {
+    elm.style.display = checkBox.checked ? 'none' : 'inline-block'
+  })
+}
+
+function tickPhoneCheckbox() {
+  let checkBox = document.getElementById('phoneCheck');
+  let phoneList = document.querySelectorAll('.phone');
+
+  phoneList.forEach(elm => {
+    elm.style.display = checkBox.checked ? 'none' : 'inline-block'
+
+  })
+}
+
+function tickBodCheckbox() {
+  let checkBox = document.getElementById('bodCheck');
+  let bodList = document.querySelectorAll('.birthOfDate');
+
+  bodList.forEach(elm => {
+    elm.style.display = checkBox.checked ? 'none' : 'inline-block'
+  })
+}
+
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
 }
