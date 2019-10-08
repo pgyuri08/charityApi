@@ -24,4 +24,4 @@ const PostSchema = mongoose.Schema({
   }
 });
 
-module.exports = mongoose.model('Userdetail', PostSchema);
+module.exports = mongoose.model('Userdetail', PostSchema); //we give the param1:name and the parschema that we will use in our mongodb

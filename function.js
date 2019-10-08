@@ -20,7 +20,7 @@ const mainCall = () => {
       addElement(element)
       return element;
     })
-    dynamicData = data
+    dynamicData = data;
   });
 }
 

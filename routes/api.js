@@ -19,7 +19,7 @@ router.get('/', async (req,res) => {
 
 router.post('/', async (req,res) => {
   const post = new Member({
-      userID: req.body.userID,
+      userID: req.body.userID, //we specify the field from our shcema and what we will fill it up with
       first_name: req.body.first_name,
       last_name: req.body.last_name,
       gender: req.body.gender,
@@ -30,9 +30,9 @@ router.post('/', async (req,res) => {
     try{
       const savedPost = await post.save();
       console.log(savedPost)
-      res.json(savedPost);
+      res.json(savedPost); //it will output the response in a json format
     }catch (err) {
-      res.json({ message: err });
+      res.json({ message: err });//it will output the error in a json format
     }
 });
 
